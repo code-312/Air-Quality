@@ -13,6 +13,7 @@ PURPLE_AIR_KEY='REPLACE_ME_WITH_PURPLE_AIR_API_READ_KEY'
 
 ## AirNow Sensor Map
 ![AirNow Sensor Map](figures/chicago_airnow_radar_map.png)
+
 The map above highlights the lack of official air quality sensors in more urban and industrial areas of Chicago. This map can be created by running [src > visualization > map_airnow_sensors.py]('src/visualization/map_airnow_sensors.py')
 
 
@@ -22,3 +23,6 @@ The map above highlights the lack of official air quality sensors in more urban 
 1. Can we use open PurpleAir data to create more localized air quality reports and warnings?
 1. Are the AirNow sensors equitably located?
     - Use Census or Social Vulnerability Index data
+
+## Contributing
+If you have a feature request or notice a bug, please add an [issue](https://github.com/Code-For-Chicago/Air-Quality/issues). If you would like to contribute to the code base, but are unsure how, please check out the [First Contributions](https://github.com/firstcontributions/first-contributions) repository.
