@@ -1,0 +1,17 @@
+{
+    "SensorID": {
+        "0":"96035",
+        "1":"96395",
+        "2":"94975"
+    },
+    "Neighborhood": {
+        "0":"McKinley Park",
+        "1":"McKinley Park",
+        "2":"McKinley Park"
+    },
+    "City": {
+        "0":"Chicago",
+        "1":"Chicago",
+        "2":"Chicago"
+    }
+}
