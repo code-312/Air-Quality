@@ -1,12 +1,33 @@
 import os
+import numpy as np
 import pandas as pd
 import geopandas as gpd
 import matplotlib.pyplot as plt
 
-os.chdir('../')
-CWD = os.getcwd()
+CWD = os.getcwd() # Assuming run from root
 DATADIR = os.path.join(CWD, 'data/supplementary')
+CRS = 'EPSG:3857'
 
+# Define subset of variables to look into
+# Prepend 'E' for estimates, 'M' for margins of error
+# Then, if not absolute numbers, prepend 'P' for percentage, 'PL' for percentile (within IL, not Chicago!)
+# If not a binary category, E = EP generally, but see documentation for details
+# Or, prepend F to flag values in the 90th percentile (again, within IL, not Chicago!)
+SVIVARS = {'TOTPOP': "Population",
+           'HH': "Households",
+           'POV': "Persons below poverty",
+           'UNEMP': "Civillian (age 16+) unemployed",
+           'PCI': "Per capita income",
+           'MINRTY': "Minority (all persons except white, non-Hispanic)",
+           'NOVEH': "Households with no vehicle available",
+           }
+
+SVITHEMES = {'RPL_THEME1': "Percentile ranking for Socioeconomic theme",
+             'RPL_THEME2': "Percentile ranking for Household Composition theme",
+             'RPL_THEME3': "Percentile ranking for Minority Status/Language theme",
+             'RPL_THEME4': "Percentile ranking for Housing Type/Transportation theme",
+             'RPL_THEMES': "Overall percentile ranking",
+             }
 
 def import_svi_data():
     """Import Chicago's SVI data for 2018"""
@@ -15,22 +36,22 @@ def import_svi_data():
     csv_censusTract = os.path.join(DATADIR, 'CensusTracts_2010_Chicago.csv')
     chicagoFIPS = pd.read_csv(csv_censusTract)['GEOID10']
     
-    # Import SVI shapefile
-    shp = os.path.join(DATADIR, "SVI_2018_ILLINOIS_tract/SVI2018_ILLINOIS_tract.shp")
-    data_shp_il = gpd.read_file(shp)
-    data_shp_il['FIPS'] = data_shp_il['FIPS'].astype(int)
+    # Import SVI shapefile as GeoDataFrame
+    f_shp = os.path.join(DATADIR, "SVI_2018_ILLINOIS_tract/SVI2018_ILLINOIS_tract.shp")
+    gdf = gpd.read_file(f_shp).to_crs(CRS) # Original is epsg:4269
+    gdf.replace(-999, np.nan, inplace=True)
+    gdf['FIPS'] = gdf['FIPS'].astype(int)
     
     # Select Chicago data only
-    data_shp = data_shp_il.loc[data_shp_il['FIPS'].isin(chicagoFIPS)]
+    gdf = gdf.loc[gdf['FIPS'].isin(chicagoFIPS)]
     
-    # Plot geographic data for confirmation
-    data_shp.plot()
-    plt.savefig('figures/census_tracts_chicago.png', bbox_inches='tight', dpi=300)
+    # Plot a key metric for confirmation
+    gdf.plot(column='RPL_THEMES',
+             legend=True,
+             legend_kwds={'label': "Overall Social Vulnerability Index Theme Percentile Ranking"})
+    plt.savefig('figures/census_tracts_chicago.png', bbox_inches='tight', dpi=600)
     
-    return data_shp
-
-
-# TODO: import list of Chicago AirNow sensors
+    return gdf
 
 
 if __name__ == "__main__":
