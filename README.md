@@ -1,6 +1,13 @@
 # Air-Quality
 Exploring data-driven solutions for local environmental groups. 
 
+## Summary
+An internal incubator project for the Code for Chicago Brigade.
+Using publicly available datasets (from sources such as EPA, PurpleAir, and Chicago Data Portal), this project aims to examine the air quality measures throughout Chicago and explore data-driven solutions for local environmental groups.
+
+Possible explorations include studying correlations between air quality and socioeconomic indicators, developing localized air quality reports and warnings.
+
+
 ## Getting Started
 1. Obtain an EPA AirNow API key [here](https://docs.airnowapi.org/account/request/) and a PurpleAir API key by emailing contact@purpleair.com
 1. Create a file called `.env` in the root directory. This file is ignored via the `.gitignore` file to avoid committing secrets.
