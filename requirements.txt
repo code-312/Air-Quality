@@ -6,3 +6,4 @@ jupyterlab==3.0.14
 matplotlib==3.3.4
 pandas==1.2.4
 seaborn>=0.9.0
+descartes==1.1.0
