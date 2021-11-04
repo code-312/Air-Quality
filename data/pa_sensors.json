@@ -1,31 +1,42 @@
 {
-    'SensorID': {
-        0: 96035, 
-        1: 96395, 
-        2: 94975
+    "SensorID": {
+        "0": 96035, 
+        "1": 96395, 
+        "2": 94975
     },
-    'Neighborhood': {
-        0: 'McKinley Park', 
-        1: 'McKinley Park', 
-        2: 'McKinley Park'
+    "Neighborhood": {
+        "0": "McKinley Park", 
+        "1": "McKinley Park", 
+        "2": "McKinley Park"
     },
-    'City': {
-        0: 'Chicago', 
-        1: 'Chicago', 
-        2: 'Chicago'
+    "City": {
+        "0": "Chicago", 
+        "1": "Chicago", 
+        "2": "Chicago"
     },
-    'ThingspeakID': {
-        0: '1267967', 
-        1: '1271673', 
-        2: '1261965'
+    "ThingspeakID": {
+        "0": "1267967", 
+        "1": "1271673", 
+        "2": "1261965"
     },
-    'ThingspeakKey': {
-        0: '6AB8IRLJJPKIFME0',
-        1: '5REK7K675FMHLXCU',
-        2: 'UKYER4XQP4R4KLVQ'},
-    'Location': {
-        0: '36th and Paulina',
-        1: '38th & Winchester',
-        2: '39th and Damen (NLEI)'
+    "ThingspeakKey": {
+        "0": "6AB8IRLJJPKIFME0",
+        "1": "5REK7K675FMHLXCU",
+        "2": "UKYER4XQP4R4KLVQ"
+    },
+    "Location": {
+        "0": "36th and Paulina",
+        "1": "38th & Winchester",
+        "2": "39th and Damen (NLEI)"
+    },
+    "ThingspeakID_B": {
+        "0": "1267969", 
+        "1": "1271675", 
+        "2": "1261967"
+    },
+    "ThingspeakKey_B": {
+        "0": "L3Y8P2IWC9NY4HLO",
+        "1": "324MUY4V609SF5M0",
+        "2": "YUSL71LBU2F7DJAJ"
     }
 }
