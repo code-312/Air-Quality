@@ -1,4 +1,7 @@
+from datetime import datetime
+from datetime import timedelta
 import pandas as pd
+import requests
 
 def pull_airnow_sensor_data(
     api_key: str,
@@ -48,3 +51,64 @@ def pull_airnow_sensor_data(
     )
     
     return sensor_data
+
+
+
+def pull_purpleair_data(
+    sensors: pd.DataFrame, 
+    city: str, 
+    neighborhood: str, 
+    key: str
+) -> pd.DataFrame:
+    '''
+    Get neighborhood-specific sensor data from PurpleAir
+    '''
+    # create list of sensor
+    sensor_list = "|".join(
+        sensors[
+            (sensors.City == city)
+            & (sensors.Neighborhood == neighborhood)
+        ].SensorID.astype(str).tolist()
+    )
+    
+    pa_query = f'https://www.purpleair.com/json?key={key}&show={sensor_list}'
+    
+    # pull data
+    pa_request = requests.get(pa_query)
+    json_data = pa_request.json()
+    # read into dataframe
+    pa_sensor_df = pd.DataFrame(json_data['results'])
+    
+    return pa_sensor_df
+
+
+
+def pull_purpleair_historical(
+    weeks_to_get: int,
+    channel: str,
+    key: str,
+    col_names: dict,
+    start_date: datetime = datetime.now(),
+) -> pd.DataFrame:
+        """
+        Get data from the ThingSpeak API one week at a time up to weeks_to_get weeks in the past
+        """
+
+        to_week = start_date - timedelta(weeks=1)
+        url = f'https://thingspeak.com/channels/{channel}/feed.csv?api_key={key}&offset=0&average=&round=2&start={to_week.strftime("%Y-%m-%d")}%2000:00:00&end={start_date.strftime("%Y-%m-%d")}%2000:00:00'
+        weekly_data = pd.read_csv(url)
+        if weeks_to_get > 1:
+            for _ in range(weeks_to_get):
+                start_date = to_week
+                to_week = to_week - timedelta(weeks=1)
+                url = f'https://thingspeak.com/channels/{channel}/feed.csv?api_key={key}&offset=0&average=&round=2&start={to_week.strftime("%Y-%m-%d")}%2000:00:00&end={start_date.strftime("%Y-%m-%d")}%2000:00:00'
+                weekly_data = pd.concat([weekly_data, pd.read_csv(url)])
+
+        # rename the columns
+        weekly_data.rename(columns=col_names, inplace=True)
+        weekly_data['created_at'] = pd.to_datetime(
+            weekly_data['created_at'], format='%Y-%m-%d %H:%M:%S %Z')
+        weekly_data.index = weekly_data.pop('entry_id')
+        weekly_data['channel'] = channel
+        
+        return weekly_data
