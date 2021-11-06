@@ -21,7 +21,7 @@ PARAMS = 'o3,pm25'
 BBOX = '-90.806632,24.634217,-71.119132,45.910790'
 DATATYPE = 'a'
 FORMAT = 'application/json'
-API_KEY = '8411B152-989D-4A0B-B929-4E92B89B0CAA' # Pls don't steal my key... :)
+API_KEY = 'YOUR_AIRNOW_API_KEY'
 SAVE_FILE = True ### Set to False if debugging & no need to save data as .json
 
 # Construct URL
