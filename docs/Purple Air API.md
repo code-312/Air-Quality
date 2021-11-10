@@ -5,6 +5,7 @@
 - We are using the API to download data on air quality into JSON or CSV format
 - We will use 7 or 8 parameters
 - Thingspeak API Key is used, which is publicly available
+- To obtain the API Key, we used the "Console" developer tool on the PurpleAir API and looked at the request URL.
 - Help: contact@purpleair.com
 - Updated: 10/27/2021, WIP: Yes
 
