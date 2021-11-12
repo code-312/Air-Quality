@@ -1,5 +1,19 @@
 # Background on air quality
 
+<!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-refresh-toc -->
+**Table of Contents**
+
+- [Background on air quality](#background-on-air-quality)
+    - [Particulate matter](#particulate-matter)
+    - [Measurement](#measurement)
+        - [PurpleAir](#purpleair)
+        - [EPA AirNow](#epa-airnow)
+        - [Air quality index (AQI)](#air-quality-index-aqi)
+            - [Example calculation](#example-calculation)
+            - [Visualization of AQI calculation](#visualization-of-aqi-calculation)
+
+<!-- markdown-toc end -->
+
 
 ## Particulate matter
 
@@ -49,13 +63,16 @@ to Maxwell's equations in this setup is due to Mie in 1908 (and others).
 Presumably these solutions can be used, when scaled up to the case of multiple
 particles, to determine the number and size of the particulates. See
 [Wikipedia](https://en.wikipedia.org/wiki/Mie_scattering) for a description of
-Mie scattering.
+Mie scattering. This is, however, not the only way to measure particulate
+matter. Another technique is that of [beta
+attenutation](https://en.wikipedia.org/wiki/Beta_attenuation_monitoring), in
+which the particulate matter is caught some sort of material and beta radiation
+is used to determine how much (and what type) was caught.
 
 ### PurpleAir
 PurpleAir's sensors use Plantower's PMS5003 and PMS1003 sensors. These sensors
 push air through a cavity in which a laser is shined and scattering
-cross-sections are measured (as sketched above). This seems to be a standard
-design for particulate matter sensors. See
+cross-sections are measured (as sketched above). See
 
 - [manual](https://www.aqmd.gov/docs/default-source/aq-spec/resources-page/plantower-pms5003-manual_v2-3.pdf)
 - [teardown](https://goughlui.com/2021/03/14/review-teardown-plantower-pms5003-laser-particulate-monitor-sensor/)
@@ -94,7 +111,59 @@ sensors, labelled A and B, for redundancy and consistency. The data shown on
 PurpleAir's map can be viewed in various configurations. The default is "US EPA
 PM 2.5 AQI". See below for some details on the definition of the AQI.
 
-### TODO EPA AirNow
+### EPA AirNow
+
+Illinois has published a
+[plan](https://www2.illinois.gov/epa/topics/air-quality/outdoor-air/air-monitoring/Documents/Draft%20Network%20Plan.pdf)
+for its air monitoring in 2022. This document provides useful information about 
+The 5 PM2.5 AirNow sensors whose data is analyzed in the notebook
+[here](../notebooks/compare_airnow_and_purpleair_.ipynb) can be found in this
+document. We reproduce some of the information here.
+
+| Location         | Latitude | Longitude | Station Type | Monitor Type | Sampling Schedule | Spatial Scale | Owner | Site Description                 |
+|------------------|----------|-----------|--------------|--------------|-------------------|---------------|-------|----------------------------------|
+| Des Plaines      | 42.060   | -87.863   | SLAMS        | FEM Teledyne | Hourly            | Urban         | IEPA  | Regional Office Bldg.            |
+| Springfield Pump | 41.913   | -87.722   | SLAMS, SPM   | Met One, BAM | 1/6, Hourly       | Neighborhood  | CCDES | Springfield Pump Station         |
+| Cicero           | 41.864   | -87.749   | SLAMS, SPM   | AS, BAM      | 1/6, Hourly       | Neighborhood  | CCDES | Liberty School                   |
+| Com Ed           | 41.751   | -87.713   | SLAMS, SPM   | Met One, BAM | 1/6, Hourly       | Neighborhood  | CCDES | Com Ed Maintenance Bldg. Trailer |
+| Alsip            | 41.671   | -87.732   | SLAMS, SPM   | Met One, BAM | 1/6, Hourly       | Neighborhood  | CCDES | Village Garage                   |
+
+We note some of the terms used in the table above:
+
+- Station Type
+  * SLAMS: State or Local Air Monitoring System.
+
+    > SLAMS monitoring is for comparison to the NAAQS
+  * SPM: Special Purpose Monitor.
+
+    > The monitors in this category are included in the Agency network but do
+    > not apply toward the determination of area NAAQS compliance
+- Monitor Type
+  * FEM Teledyne: Federal Equivalent Method Teledyne T640 Continuous (method 236)
+  * Met One: MetOne sequential (method 545)
+  * BAM: Beta Attenuation Monitor, Air Quality Index only (method 731)
+  * AS: Andersen Sequential (method 155)
+- Spatial Scale
+  * Neighborhood:
+  
+    > Concentrations within some extended area of the city that has relatively
+    > uniform land use with dimensions in the 0.5 to 4.0 km range
+  
+  * Urban:
+  
+    > Overall, citywide conditions with dimensions on the order of 4 to 50 kilometers
+- Owner
+  * [IEPA](https://www2.illinois.gov/epa/Pages/default.aspx)
+  * [CCDES](http://blog.cookcountyil.gov/sustainability/)
+
+For more details, refer to the document above.
+
+One immediate thing to note is that some of these AirNow sensors are using
+different technologies to monitor particulate matter. The Teledyne sensor, for
+instance uses 90° white-light scattering (see Table 1-1
+[here](https://www.teledyne-api.com/prod/Downloads/08354C%20T640%20USER%20MANUAL.pdf)),
+which is similar to the technology used by the Plantower monitors in PurpleAir's sensors.
+The other monitors use beta attentuation methods instead of lasers.
 
 ### Air quality index (AQI)
 
