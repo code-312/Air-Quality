@@ -2,41 +2,67 @@
     "SensorID": {
         "0": 96035, 
         "1": 96395, 
-        "2": 94975
+        "2": 94975,
+        "3": 113494,
+        "4": 113474,
+        "5": 5774
     },
     "Neighborhood": {
         "0": "McKinley Park", 
         "1": "McKinley Park", 
-        "2": "McKinley Park"
+        "2": "McKinley Park",
+        "3": "South Lawndale",
+        "4": "South Lawndale",
+        "5": "South Lawndale"
     },
     "City": {
         "0": "Chicago", 
         "1": "Chicago", 
-        "2": "Chicago"
+        "2": "Chicago",
+        "3": "Chicago",
+        "4": "Chicago",
+        "5": "Chicago",
     },
     "ThingspeakID": {
         "0": "1267967", 
         "1": "1271673", 
-        "2": "1261965"
+        "2": "1261965",
+        "3": "1440112",
+        "4": "1440052",
+        "5": "395514",
     },
     "ThingspeakKey": {
         "0": "6AB8IRLJJPKIFME0",
         "1": "5REK7K675FMHLXCU",
-        "2": "UKYER4XQP4R4KLVQ"
+        "2": "UKYER4XQP4R4KLVQ",
+        "3": "9O7I4C3E4GZ46WWX",
+        "4": "5NMUSWFVMU48KQLT",
+        "5": "9WOL7PCGSU9ZV8P5"
     },
     "Location": {
         "0": "36th and Paulina",
         "1": "38th & Winchester",
-        "2": "39th and Damen (NLEI)"
+        "2": "39th and Damen (NLEI)",
+        "3": "LVEJO",
+        "4": "LVEJO_3",
+        "5": "LVEJO_5"
+
     },
     "ThingspeakID_B": {
         "0": "1267969", 
         "1": "1271675", 
-        "2": "1261967"
+        "2": "1261967",
+        "3": "1440126",
+        "4": "1440054",
+        "5": "395517"
     },
     "ThingspeakKey_B": {
         "0": "L3Y8P2IWC9NY4HLO",
         "1": "324MUY4V609SF5M0",
-        "2": "YUSL71LBU2F7DJAJ"
+        "2": "YUSL71LBU2F7DJAJ",
+        "3": "SNCNY2YTNI3YP0RN",
+        "4": "MW4CZO5RL3X0MHBA",
+        "5": "2TDGMCMLRQPM745H"
+
     }
 }
