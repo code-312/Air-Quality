@@ -112,3 +112,33 @@ def pull_purpleair_historical(
         weekly_data['channel'] = channel
         
         return weekly_data
+    
+
+def add_pa_sensor(
+    df,
+    sensor_id: int,
+    neighborhood: str,
+    city='Chicago',
+) -> pd.DataFrame:
+    '''
+    Appends new PurpleAire sensor data to existing dataframe.
+    
+    PARAMETERS
+    ===
+    df (pandas dataframe): This is the dataframe containing PurpleAir sensor data.
+    sensor_id (int): The sensor ID to be added.
+    neighborhood (str): The neighborhood in which the sensor is located.
+    city (str): The city in which the sensor is located, defaults to Chicago.
+
+    RETURNS
+    ===
+    pandas dataframe
+    '''
+    df = df.append(
+        {'SensorID': sensor_id,
+        'Neighborhood': neighborhood,
+        'City': city},
+        ignore_index=True,
+    )
+    
+    return df
