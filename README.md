@@ -29,6 +29,7 @@ We found that even after applying the EPA correction factor for PurpleAir sensor
 
 
 ## AirNow Sensor Map
+
 | ![AirNow Sensor Map](figures/chicago_airnow_radar_map.png) |
 |: --- :|
 |The map above highlights the lack of official air quality sensors in more urban and industrial areas<br>of Chicago. *This map can be created by running [src > visualization > map_airnow_sensors.py]('src/visualization/map_airnow_sensors.py')*|
@@ -48,10 +49,11 @@ EPA_KEY='REPLACE_ME_WITH_AIRNOW_API_KEY'
 PURPLE_AIR_KEY='REPLACE_ME_WITH_PURPLE_AIR_API_READ_KEY'
 ```
 1. Run [1.0-airnow-data-extraction.ipynb](https://github.com/Code-For-Chicago/Air-Quality/blob/main/notebooks/1.0-airnow-data-extraction.ipynb) and [1.1-purpleair-data-extraction](https://github.com/Code-For-Chicago/Air-Quality/blob/main/notebooks/1.1-purpleair-data-extraction.ipynb) to collect the sensor data.
-1. Run [mckinly_park_vs_airnow_accuracy_corrections.ipynb](https://github.com/Code-For-Chicago/Air-Quality/blob/main/notebooks/mckinley_park_vs_airnow_accuracy_corrections.ipynb) with the relevant data to identify the correlation between local and EPA sensors.
+1. Run [mckinley_park_vs_airnow_accuracy_corrections.ipynb](https://github.com/Code-For-Chicago/Air-Quality/blob/main/notebooks/mckinley_park_vs_airnow_accuracy_corrections.ipynb) with the relevant data to identify the correlation between local and EPA sensors.
 
 
 ## Table of Contents
+
 - **data**: data to replicate the original analysis
 - **docs**: project and API documentation, sensor sizing estimates, and background information on air quality and health effects
 - **figures**: graphs and images created for the original analysis
@@ -60,6 +62,7 @@ PURPLE_AIR_KEY='REPLACE_ME_WITH_PURPLE_AIR_API_READ_KEY'
 - **requirements.txt**: a list of all Python libraries required to run the analysis
 
 ## Project Contributors
+
 | Name (GitHub)                                               | Role                                     |
 | :---------------------------------------------------------- | :--------------------------------------- |
 | Chris Lynch ([TheeChris](https://github.com/TheeChris))     | Project Lead, Analytics, Documentation   |
