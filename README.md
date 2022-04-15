@@ -31,8 +31,8 @@ We found that even after applying the EPA correction factor for PurpleAir sensor
 ## AirNow Sensor Map
 
 | ![AirNow Sensor Map](figures/chicago_airnow_radar_map.png) |
-|: --- :|
-|The map above highlights the lack of official air quality sensors in more urban and industrial areas<br>of Chicago. *This map can be created by running [src > visualization > map_airnow_sensors.py]('src/visualization/map_airnow_sensors.py')*|
+| :---: |
+| The map above highlights the lack of official air quality sensors in more urban and industrial areas of Chicago. *This map can be created by running [src > visualization > map_airnow_sensors.py]('src/visualization/map_airnow_sensors.py')* |
 
 
 ## Getting Started
