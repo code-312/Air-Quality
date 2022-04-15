@@ -2,6 +2,8 @@
 
 ## Air quality docs
 - [Background](background.md) on AQI, laser sensors, etc.
+- [Health effects](Health Effects of Air Pollution + Literature Summary.md) of
+  air pollution and literature review
 
 ## API access docs
 - EPA [Airnow](<AirNow API.md>)
